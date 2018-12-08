@@ -71,13 +71,11 @@ class Solution:
         :rtype: List[int]
         """
         nums_dict = {}
-        i = 0
-        for first in nums:
+        for i, first in enumerate(nums):
             second = target - first
             if second in nums_dict:
                 return [nums_dict[second], i]
             nums_dict[first] = i
-            i += 1
         raise Exception('no match found!')
   
   
