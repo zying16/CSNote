@@ -1,0 +1,83 @@
+给定一个整数数组 nums 和一个目标值 target，请你在该数组中找出和为目标值的那 两个 整数，并返回他们的数组下标。
+你可以假设每种输入只会对应一个答案。但是，你不能重复利用这个数组中同样的元素。
+
+Given an array of integers, return indices of the two numbers such that they add up to a specific target.
+You may assume that each input would have exactly one solution, and you may not use the same element twice.
+
+
+Example:
+
+Given nums = [2, 7, 11, 15], target = 9,
+
+Because nums[0] + nums[1] = 2 + 7 = 9,
+return [0, 1].
+
+
+解决方案:
+
+1，暴力法
+遍历每个元素x，并查找是否存在一个值与 target - xtarget−x 相等的目标元素。
+
+class Solution:
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        for i, first in enumerate(nums[:-1]):
+            for k, second in enumerate(nums[i+1:]):
+                if first + second == target:
+                    return [i, i+k+1]
+
+LeetCode测试用时6316ms.
+
+2.两遍哈希表
+官方解答 for Java:
+为了对运行时间复杂度进行优化，我们需要一种更有效的方法来检查数组中是否存在目标元素。如果存在，我们需要找出它的索引。
+保持数组中的每个元素与其索引相互对应的最好方法是什么？哈希表。
+一个简单的实现使用了两次迭代。在第一次迭代中，我们将每个元素的值和它的索引添加到表中。然后，在第二次迭代中，我们将检查每个元素所对应的目标元素
+（target - nums[i]target−nums[i]）是否存在于表中。注意，该目标元素不能是 nums[i]nums[i] 本身！
+
+利用Python中的字典dict来替代Java中的哈希表解决这个问题 
+
+class Solution:
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        nums_dict = {k:v for v,k in enumerate(nums)}
+        for i, first in enumerate(nums):
+            second = target - first
+            if second in nums_dict and nums_dict[second] != i:
+                return [nums_dict[first], nums_dict[second]]
+
+
+这个解法不能通过所有的测试用例，因为dict里不能存储相同的元素key，所以当(3,3), target=6时不能返回正确的值。
+
+3.一遍哈希表
+在进行迭代并将元素插入到表中的同时，我们还会回过头来检查表中是否已经存在当前元素所对应的目标元素。
+如果它存在，那我们已经找到了对应解，并立即将其返回。
+
+这个解法巧妙得解决上个解法存在的问题。 
+
+class Solution:
+    def twoSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[int]
+        """
+        nums_dict = {}
+        i = 0
+        for first in nums:
+            second = target - first
+            if second in nums_dict:
+                return [nums_dict[second], i]
+            nums_dict[first] = i
+            i += 1
+        raise Exception('no match found!')
+  
+  
