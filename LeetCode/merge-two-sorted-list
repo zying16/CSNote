@@ -11,6 +11,8 @@
 #         self.val = x
 #         self.next = None
 
+- Solution 1:
+
 class Solution:
     def mergeTwoLists(self, l1, l2):
         """
@@ -44,3 +46,34 @@ class Solution:
             return result
         else:
             return None
+
+
+- Solution 2:
+
+class Solution:
+    def mergeTwoLists(self, l1, l2):
+        """
+        :type l1: ListNode
+        :type l2: ListNode
+        :rtype: ListNode
+        """
+        if not l1:
+            return l2
+        elif not l2:
+            return l1
+        else:
+            result = ListNode(0)
+            now = result
+            while l1 and l2:
+                if l1.val < l2.val:
+                    now.next = l1
+                    l1 = l1.next
+                else:
+                    now.next = l2
+                    l2 = l2.next
+                now = now.next
+            if l1:
+                now.next = l1
+            if l2:
+                now.next = l2
+            return result.next
