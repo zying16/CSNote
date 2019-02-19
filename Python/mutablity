@@ -1,0 +1,23 @@
+Immutable data types : int, float, complex, bool, string, tuple
+
+  var1 = 'abc'
+  var2 = var1
+  var1 is var2 == True
+
+  var1 += 'def'
+  var1 is var2 == False
+
+With immutable objects, since a new object is created in order to update a value, then each name will be pointing to a different object
+
+
+Mutable objects : list, dictionary, set
+
+  var1 = [0, 1, 2]
+  var2 = var1
+
+  var2 is var1 == True
+
+  var1 += [3, 4]
+  print(var2) => [0, 1, 2, 3, 4]
+
+Update the value of var1 and the value of var2 also changed. This happens only with mutable types.
