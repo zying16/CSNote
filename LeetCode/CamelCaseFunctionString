@@ -1,0 +1,9 @@
+change a string to camel case function strings
+e.g. 'camel case function' -> 'CamelCaseFunction'
+
+def camel_case(str1):
+  strs = str1.split(' ')
+  for i, s in enumerate(strs):
+    strs[i] = s[0].upper() + s[1:]
+  result = ''.join(strs)
+  return result
