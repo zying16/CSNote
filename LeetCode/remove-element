@@ -95,6 +95,20 @@ public int removeElement(int[] nums, int val) {
     return n;
 }
 
+Python:
+class Solution:
+    def removeElement(self, nums: List[int], val: int) -> int:
+        i = 0 
+        n = len(nums)
+        while i < n:
+            if nums[i] == val:
+                nums[i] = nums[n-1]
+                n -= 1
+            else:
+                i += 1
+        return n
+
+
 复杂度分析
 
 时间复杂度：O(n)O(n)，ii 和 nn 最多遍历 nn 步。在这个方法中，赋值操作的次数等于要删除的元素的数量。因此，如果要移除的元素很少，效率会更高。
