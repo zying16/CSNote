@@ -62,14 +62,11 @@ Solution Python:
 class Solution:
     def removeDuplicates(self, nums: List[int]) -> int:
         if nums:
-            i = 0    
-            for k, n in enumerate(nums):
-                if k == 0:
-                    pass
-                else:
-                    if nums[k] != nums[i]:
-                        i += 1
-                        nums[i] = nums[k]
+            i = 0
+            for k in range(len(nums)):
+                if nums[k] != nums[i]:
+                    i += 1
+                    nums[i] = nums[k]
             return i+1
         else:
             return 0
