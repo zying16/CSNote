@@ -1,0 +1,31 @@
+Given an input string like:
+"Well, sheep says beeeeee and cat says miaaaaaaaaaaaaw - and a cow would shout moooooooooow".
+Extract the animal sounds from the string into a list.
+(Words that include character repetions longer than a 2-length sequence, as shown in the example.)
+
+
+import re 
+def animal_sound(s):
+  return [match[0] for match in re.findall(r'((\w)\2{2,})'), s]
+  
+
+
+
+(\w) matches any alphanumeric character.
+
+((\w)\2) matches any alphanumeric character followed by the same character, since \2 matches the contents of group number 2. 
+Since I nested the parentheses, group number 2 refers to the character matched by \w.
+
+Then putting it all together,  ((\w)\2{2,}) matches any alphanumeric character, followed by the same character repeated 2 or 
+more additional times.
+
+In total, that means the regex require the character to be repeated 3 or more times.
+
+
+In [71]: import re
+In [72]: s = r'http://www.google.com/search=ooo-jjjj'
+In [73]: re.findall(r'((\w)\2{2,})', s)
+Out[73]: [('www', 'w'), ('ooo', 'o'), ('jjjj', 'j')]
+
+In [78]: [match[0] for match in re.findall(r'((\w)\2{2,})', s)]
+Out[78]: ['www', 'ooo', 'jjjj']
