@@ -1,0 +1,5 @@
+Write a function that counts the non-overlapping occurences of <substring> in <string>.
+
+import re
+def repeat_nums(s, pattern):
+  return len(re.findall(pattern, s))
