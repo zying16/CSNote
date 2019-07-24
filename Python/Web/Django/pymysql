@@ -26,7 +26,7 @@ import pymysql
 pymysql.install_as_MySQLdb()
 
 
-Ressource : https://stackoverflow.com/questions/42357853/mysql-python-pip-install-error
+Source : https://stackoverflow.com/questions/42357853/mysql-python-pip-install-error
 
 
 
