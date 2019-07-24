@@ -1,0 +1,24 @@
+Pymysql - An alternative MySQL DB API driver which is not listed in Django documentation. 
+https://docs.djangoproject.com/en/1.11/ref/databases/
+
+Background : 
+  - Python 2.7.5. Cannot install Python3 in deploying server (CENTOS)
+  - Django version 1.11 (Supported Django version for Python27 is up to 1.11. Django v2 is not supported for Python27)
+  - Database : MySQL 
+  
+Official documentation of Django listed some MySQL DB API drivers: 
+  - MySQLdb is a native driver that has been developed and supported for over a decade by Andy Dustman.
+  - mysqlclient is a fork of MySQLdb which notably supports Python 3 and can be used as a drop-in replacement for MySQLdb. At the time of this writing, this is the recommended choice for using MySQL with Django.
+  - MySQL Connector/Python is a pure Python driver from Oracle that does not require the MySQL client library or any Python modules outside the standard library.
+  
+
+I tried to install one of these three modules in Centos environnement but no success. 
+Eventually I found an alternative Python module which is listed in offical documentation but is completely fonctional and easier to install.
+
+Pymysql - https://pypi.org/project/PyMySQL/#description
+
+Most public APIs are compatible with mysqlclient and MySQLdb.
+
+
+
+
