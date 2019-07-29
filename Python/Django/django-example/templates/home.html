@@ -1,0 +1,49 @@
+<!-- templates/home.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Curling{% endblock %}
+
+{% block extra-stylesheets %}
+<style media="screen">
+body {
+  height: 100vh;
+}
+.main {
+  padding-top: 5vh;
+}
+.head {
+  display: flex;
+  height: 100px;
+  margin: auto;
+  border-radius: 50px;
+  box-shadow: 0px 0px 10px 2px rgba(0,0,0,.5) inset, 0px 4px 4px -4px rgba(255,255,255,0.4), 0px -3px 3px -3px rgba(255,255,255,0.25);
+}
+.title{
+  margin: auto;
+  font-family: Helvetica Neue;
+  font-weight: bolder;
+  letter-spacing: 2em;
+  font-size: 3rem;
+}
+.content {
+  min-height: 50vh;
+  margin-top: 5vh;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+}
+@media only screen and (max-height: 700px) {
+
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid main">
+  <div class="container head">
+    <h1 class="title">DJANGO</h1>
+  </div>
+  <div class="container">
+  </div>
+</div> <!-- div main  -->
+{% endblock %}
