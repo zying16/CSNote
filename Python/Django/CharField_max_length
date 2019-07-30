@@ -1,0 +1,35 @@
+From MySQL documentation:
+
+The effective maximum length of a VARCHAR in MySQL 5.0.3 and later is subject to the maximum row size (65,535 bytes, which is shared among all columns) and the character set used. For example, utf8 characters can require up to three bytes per character, so a VARCHAR column that uses the utf8 character set can be declared to be a maximum of 21,844 characters.
+
+Limits for the VARCHAR varies depending on charset used. Using ASCII would use 1 byte per character. Meaning you could store 65,535 characters. Using utf8 will use 3 bytes per character resulting in character limit of 21,844. BUT if you are using the modern multibyte charset utf8mb4 which you should use! It supports emojis and other special characters. It will be using 4 bytes per character. This will limit the number of characters per table to 16,383. Note that other fields such as INT will also be counted to these limits.
+
+Conclusion:
+
+utf8 maximum of 21,844 characters
+utf8mb4 maximum of 16,383 characters
+
+
+Therefore theoretically we can have this in MySQL database:
+
+ -- UTF-8 database
+   CREATE TABLE t_varchar1u
+   (
+      c1 VARCHAR(21844)
+   );
+   
+
+But in some MySQL API driver, both MySQLdb and pymysql as tested, there is a maximum length size 255 for one single column.
+If size exceeds, it will raise a error :
+DataError: (1406, "Data too long for column 'xx' at row xx")
+
+So it's recommended to set Django model CharField max_length no more than 255:
+models.CharField(max_length=255)
+
+For longer text, use TextField instead. 
+
+
+
+
+
+
