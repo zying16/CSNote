@@ -1,12 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 单链表的Python实现
-重点掌握五种常见的链表操作：
-    单链表反转
-    链表中环的检测
-    两个有序链表的合并
-    删除链表倒数第n个结点
-    求链表的中间结点
 """
 
 class Node:
@@ -151,6 +145,8 @@ class SingleLinkedList:
             print(current.value, end=" ")
             current = current.next
         print()
+
+
 
 if __name__ == "__main__":
     l = SingleLinkedList()
