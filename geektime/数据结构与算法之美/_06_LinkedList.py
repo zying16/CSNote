@@ -14,8 +14,8 @@ class Node:
 class SingleLinkedList:
     """
     """
-    def __init__(self):
-        self.head = None
+    def __init__(self, head=None):
+        self.head = head
 
     def find_by_value(self, value):
         node = self.head
