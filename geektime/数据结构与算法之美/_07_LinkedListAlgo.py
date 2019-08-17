@@ -11,12 +11,18 @@ from _06_LinkedList import Node, SingleLinkedList
 
 class LinkedListAlgo(SingleLinkedList):
     # 单链表反转
-    def reverse(self):
+    def reverse2(self):
         reversed_head = None
         current = self.head
         while current:
             reversed_head, reversed_head.next, current = current, reversed_head, current.next
         self.head = reversed_head
+
+    def reverse(self):
+        current, prev = self.head, None
+        while current:
+            current.next, prev, current = prev, current, current.next
+        self.head = prev
 
     # 链表中环的检测
     def has_cycle(self):
