@@ -18,6 +18,7 @@ class LinkedListAlgo(SingleLinkedList):
             reversed_head, reversed_head.next, current = current, reversed_head, current.next
         self.head = reversed_head
 
+    # 单链表反转
     def reverse(self):
         current, prev = self.head, None
         while current:
@@ -88,6 +89,16 @@ class LinkedListAlgo(SingleLinkedList):
             slow = slow.next
         return slow
 
+    # 两两交换链表中的节点
+    def swap_pairs(self):
+        fake_head = Node(None)
+        current, current.next = fake_head, self.head
+        while current.next and current.next.next:
+            a = current.next
+            b = a.next
+            current.next, b.next, a.next = b, a, b.next
+            current = a
+        self.head = fake_head.next
 
 def reversed(l: SingleLinkedList):
     reversed_head = None
@@ -158,3 +169,9 @@ if __name__ == "__main__":
     assert repr(l) == '11->10->9->8->7->6->5->4->3->2->1->0'
     mid_node = l.find_mid_node()
     assert mid_node.value == 6
+    l = LinkedListAlgo()
+    for i in range(5):
+        l.insert_value_to_head(i)
+    assert repr(l) == '4->3->2->1->0'
+    l.swap_pairs()
+    assert repr(l) == '3->4->1->2->0'
