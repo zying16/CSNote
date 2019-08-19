@@ -27,12 +27,25 @@ class LinkedListAlgo(SingleLinkedList):
 
     # 链表中环的检测
     def has_cycle(self):
-        slow, fast = self.head, self.head
+        slow = fast = self.head
         while fast and fast.next:
             slow = slow.next
             fast = fast.next.next
             if slow == fast:
                 return True
+        return False
+
+    # 链表中环的检测 2 : 返回入环的第一个节点
+    def detect_cycle(self):
+        current = slow = fast = self.head
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
+            if slow == fast:
+                while current != slow:
+                    current = current.next
+                    slow = slow.next
+                return current 
         return False
 
     def remove_head(self):
