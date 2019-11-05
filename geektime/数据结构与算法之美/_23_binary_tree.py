@@ -19,7 +19,7 @@ def in_order(node:TreeNode):
         yield from in_order(node.right)
 
 
-# 中序遍历
+# 后序遍历
 def post_order(node:TreeNode):
     if node:
         yield from post_order(node.left)
