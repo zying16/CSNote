@@ -32,6 +32,7 @@ class BinarySearchTree:
         node_to_insert = TreeNode(value)
         if self._root is None:
             self._root = node_to_insert
+            return 
         node = self._root
         while node:
             if value > node.val:
