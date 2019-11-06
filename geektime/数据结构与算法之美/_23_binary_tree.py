@@ -26,6 +26,14 @@ def post_order(node:TreeNode):
         yield from post_order(node.right)
         yield node.val
 
+def invert_tree(node:TreeNode):
+    if not node: return None
+    node.left, node.right = node.right, node.left
+    self.invert_tree(node.left)
+    self.invert_tree(node.right)
+    return node
+
+
 
 if __name__ == '__main__':
     '''
