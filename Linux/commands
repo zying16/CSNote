@@ -1,0 +1,22 @@
+man, help, info : 帮助
+mkdir -p /a/b/c : 建立多级目录
+cp -r : 复制文件夹
+cp -p : 复制文件夹并保留用户，权限，时间等文件信息
+cp -a : 递归复制文件夹并保留权限，时间等信息
+head : 查看文件开头
+tail : 查看文件结尾
+    -f : 内容更新后，显示信息更新
+wc : 统计文件内容信息
+    -l : 统计总行数信息
+tar : 打包命令
+    -c : 打包
+    -x : 解包
+    -f : 指定操作类型为文件
+打包及压缩 :
+tar cf yasuowenjian.tar daiyasuowenjian
+tar czf yasuowenjian.tar.gz daiyasuowenjian
+tar cjf yasuowenjian.tar.bz2 daiyasuowenjian
+解包及解压缩 :
+tar xf yasuowenjian.tar -C /dest/
+tar xzf yasuowenjian.tar.gz -C /dest/
+tar xjf yasuowenjian.tar.bz2 -C /dest/
