@@ -1,0 +1,26 @@
+import copy
+origin = [1, 2, [3, 4]]
+#origin 里边有三个元素：1， 2，[3, 4]
+cop1 = copy.copy(origin)
+cop2 = copy.deepcopy(origin)
+cop1 == cop2
+True
+cop1 is cop2
+False
+#cop1 和 cop2 看上去相同，但已不再是同一个object
+origin[2][0] = "hey!"
+origin
+[1, 2, ['hey!', 4]]
+cop1
+[1, 2, ['hey!', 4]]
+cop2
+[1, 2, [3, 4]]
+#把origin内的子list [3, 4] 改掉了一个元素，观察 cop1 和 cop2
+
+copy对于一个复杂对象的子对象并不会完全复制，什么是复杂对象的子对象呢？就比如序列里的嵌套序列，字典里的嵌套序列等都是复杂对象的子对象。对于子对象，python会把它当作一个公共镜像存储起来，所有对他的复制都被当成一个引用，所以说当其中一个引用将镜像改变了之后另一个引用使用镜像的时候镜像已经被改变了。
+
+所以说看这里的origin[2]，也就是 [3, 4] 这个 list。根据 shallow copy 的定义，在 cop1[2] 指向的是同一个 list [3, 4]。那么，如果这里我们改变了这个 list，就会导致 origin 和 cop1 同时改变。这就是为什么上边 origin[2][0] = “hey!” 之后，cop1 也随之变成了 [1, 2, [‘hey!’, 4]]。
+
+
+deepcopy的时候会将复杂对象的每一层复制一个单独的个体出来。
+这时候的 origin[2] 和 cop2[2] 虽然值都等于 [3, 4]，但已经不是同一个 list了。即我们寻常意义上的复制。
